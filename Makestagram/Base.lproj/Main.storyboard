@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Photo View-->
         <scene sceneID="h72-6h-hik">
             <objects>
-                <viewController id="NcD-g2-rvs" sceneMemberID="viewController">
+                <viewController title="Photo View" id="NcD-g2-rvs" customClass="PhotoViewController" customModule="Makestagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MeZ-rg-r9C"/>
                         <viewControllerLayoutGuide type="bottom" id="J3a-2E-A2D"/>
@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="337" y="336"/>
         </scene>
-        <!--View Controller-->
+        <!--Friend Search-->
         <scene sceneID="BLp-et-wWX">
             <objects>
-                <viewController id="8uQ-O7-Nza" sceneMemberID="viewController">
+                <viewController title="Friend Search" id="8uQ-O7-Nza" customClass="FriendSearchViewController" customModule="Makestagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PDS-8H-eX5"/>
                         <viewControllerLayoutGuide type="bottom" id="0kr-hl-3Ei"/>
@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="346" y="1042"/>
         </scene>
-        <!--View Controller-->
+        <!--Timeline View-->
         <scene sceneID="u8O-FD-m3r">
             <objects>
-                <viewController id="qaN-eY-z7Z" sceneMemberID="viewController">
+                <viewController title="Timeline View" id="qaN-eY-z7Z" customClass="TimelineViewController" customModule="Makestagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vIh-8G-X1w"/>
                         <viewControllerLayoutGuide type="bottom" id="yqb-eN-Izw"/>
