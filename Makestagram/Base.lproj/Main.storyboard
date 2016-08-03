@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--View Controller-->
         <scene sceneID="h72-6h-hik">
             <objects>
                 <viewController id="NcD-g2-rvs" sceneMemberID="viewController">
@@ -18,13 +18,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="WGW-53-Kkk"/>
+                    <tabBarItem key="tabBarItem" title="" image="camera" id="WGW-53-Kkk">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t9u-L6-g89" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="337" y="336"/>
         </scene>
-        <!--Item 1-->
+        <!--View Controller-->
+        <scene sceneID="BLp-et-wWX">
+            <objects>
+                <viewController id="8uQ-O7-Nza" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PDS-8H-eX5"/>
+                        <viewControllerLayoutGuide type="bottom" id="0kr-hl-3Ei"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9uU-3F-wga">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="people" id="NRv-G9-dgA">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ma2-E0-JTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="346" y="1042"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="u8O-FD-m3r">
             <objects>
                 <viewController id="qaN-eY-z7Z" sceneMemberID="viewController">
@@ -37,7 +60,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Vxs-BJ-Vut"/>
+                    <tabBarItem key="tabBarItem" title="" image="home" id="Vxs-BJ-Vut">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Meo-Vj-qKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,6 +80,7 @@
                     <connections>
                         <segue destination="qaN-eY-z7Z" kind="relationship" relationship="viewControllers" id="ukN-Pe-vYe"/>
                         <segue destination="NcD-g2-rvs" kind="relationship" relationship="viewControllers" id="ecM-ge-ZJb"/>
+                        <segue destination="8uQ-O7-Nza" kind="relationship" relationship="viewControllers" id="cQD-8P-LQu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wwS-7M-ag2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -62,4 +88,9 @@
             <point key="canvasLocation" x="-486" y="5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" width="40" height="30"/>
+        <image name="home" width="38" height="36"/>
+        <image name="people" width="42" height="42"/>
+    </resources>
 </document>
