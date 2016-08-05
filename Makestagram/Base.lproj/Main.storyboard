@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Photo View-->
@@ -58,11 +59,63 @@
                     <view key="view" contentMode="scaleToFill" id="g9b-1c-582">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QWX-Aq-Fso">
+                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" id="mMp-wL-QyH">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mMp-wL-QyH" id="mdZ-SH-VCN">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="qaN-eY-z7Z" id="ilH-QU-KFY"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yqb-eN-Izw" firstAttribute="top" secondItem="QWX-Aq-Fso" secondAttribute="bottom" id="3Y5-dQ-3pS"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="QWX-Aq-Fso" secondAttribute="bottom" constant="31" id="6Un-Ks-jyb"/>
+                            <constraint firstAttribute="trailing" secondItem="QWX-Aq-Fso" secondAttribute="trailing" id="7Yd-yC-YXx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QWX-Aq-Fso" secondAttribute="trailing" constant="-40" id="AzA-Dc-pdA"/>
+                            <constraint firstItem="QWX-Aq-Fso" firstAttribute="top" secondItem="vIh-8G-X1w" secondAttribute="bottom" id="IUL-ec-WLn"/>
+                            <constraint firstItem="QWX-Aq-Fso" firstAttribute="top" secondItem="vIh-8G-X1w" secondAttribute="bottom" constant="59" id="Lzy-8a-7Wq"/>
+                            <constraint firstItem="QWX-Aq-Fso" firstAttribute="leading" secondItem="g9b-1c-582" secondAttribute="leadingMargin" id="N9a-ga-1Sc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QWX-Aq-Fso" secondAttribute="trailing" id="Q95-mZ-R3Z"/>
+                            <constraint firstItem="QWX-Aq-Fso" firstAttribute="leading" secondItem="g9b-1c-582" secondAttribute="leading" id="RDQ-Gd-dTx"/>
+                            <constraint firstAttribute="trailing" secondItem="QWX-Aq-Fso" secondAttribute="trailing" id="UnI-0b-y3S"/>
+                            <constraint firstAttribute="trailing" secondItem="QWX-Aq-Fso" secondAttribute="trailing" id="eVa-rs-rOn"/>
+                            <constraint firstItem="QWX-Aq-Fso" firstAttribute="leading" secondItem="g9b-1c-582" secondAttribute="leadingMargin" id="j2v-bw-P3E"/>
+                            <constraint firstItem="QWX-Aq-Fso" firstAttribute="leading" secondItem="g9b-1c-582" secondAttribute="leading" id="lce-r4-UQ5"/>
+                            <constraint firstItem="QWX-Aq-Fso" firstAttribute="leading" secondItem="g9b-1c-582" secondAttribute="leading" id="svK-9f-4F8"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6Un-Ks-jyb"/>
+                                <exclude reference="AzA-Dc-pdA"/>
+                                <exclude reference="Lzy-8a-7Wq"/>
+                                <exclude reference="N9a-ga-1Sc"/>
+                                <exclude reference="Q95-mZ-R3Z"/>
+                                <exclude reference="RDQ-Gd-dTx"/>
+                                <exclude reference="UnI-0b-y3S"/>
+                                <exclude reference="eVa-rs-rOn"/>
+                                <exclude reference="j2v-bw-P3E"/>
+                                <exclude reference="svK-9f-4F8"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="home" id="Vxs-BJ-Vut">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="tableView" destination="QWX-Aq-Fso" id="1D4-Zl-nyX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Meo-Vj-qKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
