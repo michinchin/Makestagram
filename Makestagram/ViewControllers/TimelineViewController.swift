@@ -83,11 +83,12 @@ extension TimelineViewController: UITabBarControllerDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // 2
-        let cell = tableView.dequeueReusableCellWithIdentifier("PostCell")!
+        // cast cell to custon type, PostTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
         
-        cell.textLabel!.text = "Post"
-
+        // using postImageView property to decide which image to display
+        cell.postImageView.image = posts[indexPath.row].image
+        
         return cell
     }
 }
