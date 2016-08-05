@@ -17,24 +17,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-
+        
         let configuration = ParseClientConfiguration { (configuration) -> Void in
             configuration.applicationId = "makestagram"
             configuration.server = "https://makestagram-parse-acc.herokuapp.com/parse"
         }
         Parse.initializeWithConfiguration(configuration)
         
-        do {
-            try PFUser.logInWithUsername("test", password: "test")
-        } catch {
-            print("Unable to log in")
-        }
         
-        if let currentUser = PFUser.currentUser() {
-            print("\(currentUser.username!) logged in successfully")
-        } else {
-            print("No logged in user :(")
-        }
+        PFUser.logInWithUsernameInBackground("test", password: "test")
+//        do {
+//            try PFUser.logInWithUsername("test", password: "test")
+//        } catch {
+//            print("Unable to log in")
+//        }
+//
+//        if let currentUser = PFUser.currentUser() {
+//            print("\(currentUser.username!) logged in successfully")
+//        } else {
+//            print("No logged in user :(")
+//        }
+        /*changes default access on parse to (public read access and private write access)*/
+//        let acl = PFACL()
+//        acl.publicReadAccess = true
+//        PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
         
         return true
     }
