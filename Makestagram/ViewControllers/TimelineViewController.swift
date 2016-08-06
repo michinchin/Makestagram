@@ -17,7 +17,7 @@ class TimelineViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(posts.count)
         //sets TimelineViewController to be the delegate of the tab bar--the first screen
         self.tabBarController?.delegate = self
     }
@@ -44,11 +44,23 @@ class TimelineViewController: UIViewController {
         // formats timeline to show most recent pictures
         query.orderByDescending("createdAt")
         
-        // kick off network request
         query.findObjectsInBackgroundWithBlock {(result: [PFObject]?, error: NSError?) -> Void in
-            // receive all posts that meet requirements and try to store in array, if empty, store empty array
             self.posts = result as? [Post] ?? []
-            // refresh table view once receiving all new posts
+            
+            // 1
+            for post in self.posts {
+                do {
+                    // 2
+                    let data = try post.imageFile?.getData()
+                    // 3
+                    post.image = UIImage(data: data!, scale:1.0)
+                    print(post.image!)
+                    
+                } catch {
+                    print("could not get image")
+                }
+            }
+            
             self.tableView.reloadData()
         }
     }
@@ -87,7 +99,8 @@ extension TimelineViewController: UITabBarControllerDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
         
         // using postImageView property to decide which image to display
-        cell.postImageView.image = posts[indexPath.row].image
+        let image = posts[indexPath.row].image
+        cell.postImageView.image = image
         
         return cell
     }
