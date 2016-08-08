@@ -25,37 +25,14 @@ class TimelineViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        // fetches the query of follow relationships
-        let followingQuery = PFQuery(className: "Follow")
-        followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
-        
-        // adding pictures from those whom u are following
-        let postsFromFollowedUsers = Post.query()
-        postsFromFollowedUsers!.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
-        
-        // retrieve posts the current user has posted
-        let postsFromThisUser = Post.query()
-        postsFromThisUser!.whereKey("user", equalTo: PFUser.currentUser()!)
-        
-        // will return contraints from above two queries
-        let query = PFQuery.orQueryWithSubqueries([postsFromFollowedUsers!, postsFromThisUser!])
-        // resolve pointer and download all info about user
-        query.includeKey("user")
-        // formats timeline to show most recent pictures
-        query.orderByDescending("createdAt")
-        
-        query.findObjectsInBackgroundWithBlock {(result: [PFObject]?, error: NSError?) -> Void in
+        ParseHelper.timelineRequestForCurrentUser {
+            (result: [PFObject]?, error: NSError?) -> Void in
             self.posts = result as? [Post] ?? []
             
-            // 1
             for post in self.posts {
                 do {
-                    // 2
                     let data = try post.imageFile?.getData()
-                    // 3
                     post.image = UIImage(data: data!, scale:1.0)
-                    print(post.image!)
-                    
                 } catch {
                     print("could not get image")
                 }
@@ -64,7 +41,6 @@ class TimelineViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-
 }
 
 
