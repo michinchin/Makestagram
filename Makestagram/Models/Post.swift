@@ -7,8 +7,9 @@ import Bond
 // 1
 class Post : PFObject, PFSubclassing {
     
+    //making the variable observable--creating wrapper around value wish to store to allow binding
     var image: Observable<UIImage?> = Observable(nil)
-
+    
     var photoUploadTask: UIBackgroundTaskIdentifier?
 
 
@@ -38,13 +39,13 @@ class Post : PFObject, PFSubclassing {
     }
     func uploadPost() {
         
-        if let image = image.value {
+        if let image = image.value {//if image has value
             
-            guard let imageData = UIImageJPEGRepresentation(image, 0.8) else {return}
-            guard let imageFile = PFFile(name: "image.jpg", data: imageData) else {return}
+            guard let imageData = UIImageJPEGRepresentation(image, 0.8) else {return} //return as jpeg
+            guard let imageFile = PFFile(name: "image.jpg", data: imageData) else {return} //store in parse
             
-            user = PFUser.currentUser()
-            self.imageFile = imageFile
+            user = PFUser.currentUser()//initialize
+            self.imageFile = imageFile//initialize
             
             photoUploadTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
                 UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
@@ -57,7 +58,6 @@ class Post : PFObject, PFSubclassing {
     }
     func downloadImage() {
         // if image is not downloaded yet, get it
-        // 1
         if (image.value == nil) {
             // 2
             imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
