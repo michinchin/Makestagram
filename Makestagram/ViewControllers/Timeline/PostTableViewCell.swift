@@ -8,14 +8,23 @@
 
 import UIKit
 import Bond
+import Parse
 
 
 class PostTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likesIconImageView: UIImageView!
+    @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var moreButton: UIButton!
 
-
+    @IBAction func moreButtonTapped(sender: AnyObject) {
+    }
+    @IBAction func likeButtonTapped(sender: AnyObject) {
+        post?.toggleLikePost(PFUser.currentUser()!)
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
