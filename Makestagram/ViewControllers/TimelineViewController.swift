@@ -25,18 +25,8 @@ class TimelineViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        ParseHelper.timelineRequestForCurrentUser {
-            (result: [PFObject]?, error: NSError?) -> Void in
+        ParseHelper.timelineRequestForCurrentUser { (result: [PFObject]?, error: NSError?) -> Void in
             self.posts = result as? [Post] ?? []
-            
-            for post in self.posts {
-                do {
-                    let data = try post.imageFile?.getData()
-                    post.image = UIImage(data: data!, scale:1.0)
-                } catch {
-                    print("could not get image")
-                }
-            }
             
             self.tableView.reloadData()
         }
@@ -51,7 +41,8 @@ extension TimelineViewController: UITabBarControllerDelegate {
         // instantiate photo taking class, provide callback for when photo is selected
         photoTakingHelper = PhotoTakingHelper(viewController: self.tabBarController!) { (image: UIImage?) in
             let post = Post()
-            post.image = image
+            // 1
+            post.image.value = image!
             post.uploadPost()
         }
     }
@@ -69,14 +60,14 @@ extension TimelineViewController: UITabBarControllerDelegate {
         // 1
         return posts.count
     }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // cast cell to custon type, PostTableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
         
-        // using postImageView property to decide which image to display
-        let image = posts[indexPath.row].image
-        cell.postImageView.image = image
+        let post = posts[indexPath.row]
+        // 1
+        post.downloadImage()
+        // 2
+        cell.post = post
         
         return cell
     }
